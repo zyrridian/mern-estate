@@ -190,7 +190,7 @@ export default function Profile() {
         <div className='flex flex-col gap-4'>
           <h1 className="text-center mt-7 text-2xl font-semibold">Your Listings</h1>
           { userListings.map((listing) => (
-            <div key={listing._id} className='ggap-4 border rounded-lg p-3 flex justify-between items-center'>
+            <div key={listing._id} className='gap-4 border rounded-lg p-3 flex justify-between items-center'>
               <Link to={`/listing/${listing._id}`}>
                 <img src={listing.imageUrls[0]} alt="listing cover" className='h-16 w-16 object-contain' />
               </Link>
@@ -199,7 +199,9 @@ export default function Profile() {
               </Link>
               <div className='flex flex-col items-center'>
                 <button onClick={()=>handleListingDelete(listing._id)} className="text-red-700 uppercase">Delete</button>
-                <button className="text-green-700 uppercase">Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-green-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           )) }
