@@ -147,7 +147,7 @@ export default function UpdateListing() {
             setLoading(false);
         }
     }
-
+// should be deleted later
     console.log(formData);
   return (
     <main className='p-3 max-w-4xl mx-auto'>
@@ -192,7 +192,9 @@ export default function UpdateListing() {
                         <input type="number" id='regularPrice' min='50' max='100000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.regularPrice} />
                         <div className="flex flex-col items-center">
                             <p>Regular Price</p>
-                            <span className='text-sm'>($ / month)</span>
+                            { formData.type === 'rent' && (
+                                <span className='text-sm'>($ / month)</span>
+                            ) }
                         </div>
                     </div>
                     { formData.offer && (
@@ -200,7 +202,9 @@ export default function UpdateListing() {
                             <input type="number" id='discountedPrice' min='0' max='1000000' required className='p-3 border border-gray-300 rounded-lg'  onChange={handleChange} value={formData.discountedPrice} />
                             <div className="flex flex-col items-center">
                                 <p>Discounted Price</p>
-                                <span className="text-sm">($ / month)</span>
+                                { formData.type === 'rent' && (
+                                    <span className='text-sm'>($ / month)</span>
+                                ) }
                             </div>
                         </div>
                     )}
